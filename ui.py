@@ -15,36 +15,30 @@ img_size = '10%'
 
 app.layout = html.Div([
     dcc.Store(id='selected-heroes'),
-    html.Div(id='temp_caca'),
 
-    
-    #dbc.Col(),
-    dbc.Row([
+    html.Div(id='main-panel',
+             style={'float':'left',
+                    'width':'50%',
+                    'background':'red',
+                    'display':'inline-block'}),
 
-        dbc.Col(
-            html.Div(id='main-panel',style={'float':'left',
-                                            'width':'50%',
-                                            'background':'red',}),
-            width={"order": 1}, #"size": 3, , "offset": 2
-            ),
 
-        dbc.Col(
-            html.Div(id='enemy-team',style={'float':'center',
-                                            'width':'25%',
-                                            'background':'pink',}),
-            width={"order": 2},
-            ),
 
-        dbc.Col(
-            html.Div(id='counter-picks',style={'float':'right',
-                                               'width':'25%',
-                                               'background':'pink',}),
-            width={"order": 3},
-            ),
+    html.Div(id='enemy-team',
+             style={'float':'center',
+                    'width':'25%',
+                    'background':'pink',
+                    'display':'inline-block'}),
 
-    ]),
 
-    
+
+    html.Div(id='counter-picks',
+             style={'float':'right',
+                    'width':'25%',
+                    'background':'pink',
+                    'display':'inline-block'}),
+
+
     html.Img(id='test_img')
 
 ])
@@ -157,16 +151,6 @@ def update_enemy_team(*args):
     return selected_heroes, main_clicks, enemy_click, dbc.Col(enemy_team_column), dbc.Col(list_counters)
 
 
-
-"""
-@app.callback(
-    Output('temp_caca','children'),
-    Input('selected-heroes', 'data')
-)
-def testxx(data):
-    print("data_updated")
-    return []
-"""
 
 if __name__ == '__main__':
     app.run_server(debug=True)
